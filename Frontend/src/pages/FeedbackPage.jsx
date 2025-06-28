@@ -13,7 +13,7 @@ const FeedbackPage = () => {
     useEffect(() => {
         const fetchFeedback = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/interview/${interviewId}`);
+                const res = await axios.get(`${process.env.REACT_APP_MY_API_BASE}/api/interview/${interviewId}`);
                 if (!res.data.feedback || !res.data.score) {
                     setError("Feedback is not yet available for this session.");
                 } else {

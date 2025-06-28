@@ -15,17 +15,17 @@ export default function SchedulePage({ userId, matchedUserId, matchedUserName, s
     setLoading(true);
     setError('');
     try {
-      await fetch(`http://localhost:5000/api/users/${userId}/availability`, {
+      await fetch(`${process.env.REACT_APP_MY_API_BASE}/api/users/${userId}/availability`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ availability: [passedDate] })
       });
-      await fetch(`http://localhost:5000/api/users/${matchedUserId}/availability`, {
+      await fetch(`${process.env.REACT_APP_MY_API_BASE}/api/users/${matchedUserId}/availability`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ availability: [passedDate] })
       });
-      const res = await fetch(`http://localhost:5000/api/users/${userId}/schedule`, {
+      const res = await fetch(`${process.env.REACT_APP_MY_API_BASE}/api/users/${userId}/schedule`, {
         method: 'POST'
       });
       const json = await res.json();

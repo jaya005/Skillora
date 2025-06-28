@@ -8,7 +8,7 @@ export const fetchMatches = async (userId) => {
 
   try {
     console.log("fetchMatches userId:", userId); // Add this line
-    const response = await axios.get(`http://localhost:5000/api/users/match/${userId}`);
+    const response = await axios.get(`${process.env.REACT_APP_MY_API_BASE}/api/users/match/${userId}`);
     return response.data;
   } catch (err) {
     console.error("❌ Error in fetchMatches ➜", err);
@@ -18,7 +18,7 @@ export const fetchMatches = async (userId) => {
 
 export const seedData = async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/users/seed');
+    const response = await axios.get('${process.env.REACT_APP_MY_API_BASE}/api/users/seed');
     return response.data;
   } catch (err) {
     console.error("❌ Error in seedData ➜", err);

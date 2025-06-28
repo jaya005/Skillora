@@ -17,7 +17,7 @@ const Section = ({ label, type }) => {
     setGenerated('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/genai', {
+      const response = await axios.post(`${process.env.REACT_APP_MY_API_BASE}/api/genai`, {
         prompt,
         tone,
         type,

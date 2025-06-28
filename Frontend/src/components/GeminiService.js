@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetchResourcesFromGemini = async (topic, description) => {
   try {
-    const res = await axios.post('http://localhost:5000/api/gemini-resources', {
+    const res = await axios.post(`${process.env.REACT_APP_MY_API_BASE}/api/gemini-resources`, {
       topic,
       description,
     });

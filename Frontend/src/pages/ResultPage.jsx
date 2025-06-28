@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/wraps';
+const API_URL = `${process.env.REACT_APP_MY_API_BASE}/api/wraps`;
 
 function ResultPage() {
   const [jobId, setJobId] = useState(null);

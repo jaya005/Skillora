@@ -25,7 +25,7 @@ const InterviewPage = () => {
         const fetchInterview = async () => {
             try {
                 // FIXED: Using a relative path to allow the proxy to work.
-                const res = await axios.get(`http://localhost:5000/api/interview/${interviewId}`);
+                const res = await axios.get(`${process.env.REACT_APP_MY_API_BASE}/api/interview/${interviewId}`);
                 setConversation(res.data.conversationHistory);
                 
                 // Speak the first question (with a safety check)
@@ -63,7 +63,7 @@ const InterviewPage = () => {
 
         try {
             // FIXED: Using a relative path
-            const res = await axios.post('http://localhost:5000/api/interview/next', { interviewId, answer: currentAnswer });
+            const res = await axios.post(`${process.env.REACT_APP_MY_API_BASE}/api/interview/next`, { interviewId, answer: currentAnswer });
             const { nextQuestion } = res.data;
             setConversation(prev => [...prev, { role: 'assistant', content: nextQuestion }]);
             speak(nextQuestion); // Speak the new question
@@ -79,7 +79,7 @@ const InterviewPage = () => {
         setIsEnding(true);
         try {
             // FIXED: Using a relative path
-            await axios.post('http://localhost:5000/api/interview/end', { interviewId });
+            await axios.post(`${process.env.REACT_APP_MY_API_BASE}/api/interview/end`, { interviewId });
             navigate(`/feedback/${interviewId}`);
         } catch (error) {
             console.error("Failed to end interview", error);

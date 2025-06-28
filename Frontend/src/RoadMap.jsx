@@ -68,7 +68,7 @@ const RoadmapContent = () => {
     const fetchRoadmap = async () => {
       try {
         setIsLoading(true);       
-const response = await axios.post('http://localhost:5000/api/roadmap', {
+const response = await axios.post(`${process.env.REACT_APP_MY_API_BASE}/api/roadmap`, {
   currentSkills,
   goal
 });

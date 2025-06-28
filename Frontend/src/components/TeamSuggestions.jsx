@@ -5,7 +5,7 @@ function TeamSuggestions() {
   const [results, setResults] = useState([]);
 
   const findTeam = async () => {
-    const res = await fetch('http://localhost:5000/api/teamfinder/complement', {
+    const res = await fetch(`${process.env.REACT_APP_MY_API_BASE}/api/teamfinder/complement`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

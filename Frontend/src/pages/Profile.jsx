@@ -8,7 +8,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/profile/${myProfileId}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/profile/${myProfileId}`);
         const data = await res.json();
         setProfile(data);
       } catch (error) {
