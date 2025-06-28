@@ -14,7 +14,9 @@ const userRoutes = require('./routes/users');
 const youtubeSearchRoutes = require('./routes/youtubeSearch'); // ✅ ADD THIS
 
 dotenv.config();
-
+app.use(cors({
+  origin: '*', // or your frontend URL
+}));
 const app = express();
 const PORT = process.env.PORT || 5000;
 
