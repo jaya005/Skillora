@@ -82,25 +82,24 @@ export default function AIToolsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#202A44] dark:bg-black dark:text-white">
+    <div className="min-h-screen bg-white text-black">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-[#202A44] dark:text-white mb-4">
+            <h1 className="text-4xl font-bold text-black mb-4">
               AI-Powered Tools
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-black max-w-2xl mx-auto">
               Leverage the power of artificial intelligence to enhance your professional profile. Our suite of AI tools helps you create compelling resumes, generate engaging bios, and build your personal brand.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-
             {tools.map((tool) => (
               <button
                 key={tool.id}
                 onClick={() => setActiveTool(tool.id)}
-                className={`card text-left transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-4 rounded-lg ${
+                className={`card text-left transition-all duration-300 bg-white border border-gray-200 p-4 rounded-lg ${
                   activeTool === tool.id ? 'ring-2 ring-blue-600' : 'hover:shadow-lg'
                 }`}
               >
@@ -109,19 +108,17 @@ export default function AIToolsPage() {
                     <span className="text-2xl">{tool.icon}</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#202A44] dark:text-white">
-                      {tool.name}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mt-1">{tool.description}</p>
+                    <h3 className="text-lg font-semibold text-black">{tool.name}</h3>
+                    <p className="text-black mt-1">{tool.description}</p>
                   </div>
                 </div>
               </button>
             ))}
           </div>
 
-          <div className="card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 rounded-lg">
+          <div className="card bg-white border border-gray-200 p-6 rounded-lg">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold text-[#202A44] dark:text-white">
+              <h2 className="text-2xl font-semibold text-black">
                 {tools.find((t) => t.id === activeTool)?.name}
               </h2>
               <span className="text-4xl">
@@ -132,7 +129,7 @@ export default function AIToolsPage() {
             <div className="space-y-6">
               {activeTool === 'interview' && (
                 <div className="text-center">
-                  <p className="mb-4 text-gray-600 dark:text-gray-300">Practice technical and behavioral questions in a simulated interview environment.</p>
+                  <p className="mb-4 text-black">Practice technical and behavioral questions in a simulated interview environment.</p>
                   <button
                     onClick={handleInterviewRedirect}
                     className="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition"
@@ -145,22 +142,22 @@ export default function AIToolsPage() {
               {activeTool === 'bio' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Professional Background
                     </label>
                     <textarea
-                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white text-black dark:bg-gray-800 dark:text-white h-32"
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-white text-black h-32"
                       placeholder="Tell us about your experience and expertise..."
                       value={bioPrompt}
                       onChange={(e) => setBioPrompt(e.target.value)}
                     ></textarea>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Tone
                     </label>
                     <select
-                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white text-black dark:bg-gray-800 dark:text-white"
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-white text-black"
                       value={bioTone}
                       onChange={(e) => setBioTone(e.target.value)}
                     >
@@ -178,8 +175,8 @@ export default function AIToolsPage() {
                   </button>
                   {bioOutput && (
                     <div className="border-t pt-3">
-                      <h3 className="font-medium text-gray-700 dark:text-gray-300">Generated Output:</h3>
-                      <p className="mt-2 whitespace-pre-wrap text-gray-800 dark:text-white">{bioOutput}</p>
+                      <h3 className="font-medium text-black">Generated Output:</h3>
+                      <p className="mt-2 whitespace-pre-wrap text-black">{bioOutput}</p>
                     </div>
                   )}
                 </div>
@@ -188,22 +185,22 @@ export default function AIToolsPage() {
               {activeTool === 'post' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Post Context
                     </label>
                     <textarea
-                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white text-black dark:bg-gray-800 dark:text-white h-32"
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-white text-black h-32"
                       placeholder="Describe the post you want to make..."
                       value={postPrompt}
                       onChange={(e) => setPostPrompt(e.target.value)}
                     ></textarea>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Tone
                     </label>
                     <select
-                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white text-black dark:bg-gray-800 dark:text-white"
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-white text-black"
                       value={postTone}
                       onChange={(e) => setPostTone(e.target.value)}
                     >
@@ -221,8 +218,8 @@ export default function AIToolsPage() {
                   </button>
                   {postOutput && (
                     <div className="border-t pt-3">
-                      <h3 className="font-medium text-gray-700 dark:text-gray-300">Generated Output:</h3>
-                      <p className="mt-2 whitespace-pre-wrap text-gray-800 dark:text-white">{postOutput}</p>
+                      <h3 className="font-medium text-black">Generated Output:</h3>
+                      <p className="mt-2 whitespace-pre-wrap text-black">{postOutput}</p>
                     </div>
                   )}
                 </div>
@@ -231,26 +228,26 @@ export default function AIToolsPage() {
               {activeTool === 'path' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Your Goal
                     </label>
                     <input
                       type="text"
                       value={goal}
                       onChange={e => setGoal(e.target.value)}
-                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white text-black dark:bg-gray-800 dark:text-white"
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-white text-black"
                       placeholder="e.g., Content Writer"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Your Current Skills (comma separated)
                     </label>
                     <input
                       type="text"
                       value={currentSkills}
                       onChange={e => setCurrentSkills(e.target.value)}
-                      className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white text-black dark:bg-gray-800 dark:text-white"
+                      className="w-full p-3 border border-gray-300 rounded-lg bg-white text-black"
                       placeholder="e.g., English, SEO, Grammar"
                     />
                   </div>
